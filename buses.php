@@ -10,6 +10,7 @@
     <!-- ----font CDN---- -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    
     <!-- --------font CDN------ -->
     <title>Buses</title>
     <?php 
@@ -24,16 +25,16 @@
 
 <body>  
 <header class="header-container">
-    <p class="title"><a href="./index.php">BUS OCCUPANCY</a></p>
+    <p class="title"><a href="./index.htm">BUS OCCUPANCY</a></p>
     <nav class="nav-bar">
         <ul>
-            <li><a href="./index.php">HOME</a></li>
+            <li><a href="./index.htm">HOME</a></li>
             <li><a href="./buses.php">BUSES</a></li>
             <li><a href="./contact.php">CONTACT US</a></li>
         </ul>
     </nav>
 </header>
-
+<div class="busPage-bg">
     <table class="table-container">
         <!-- -------------iterate through all the row-------------- -->
     <?php foreach($bus_data as $bus_row) {?>
@@ -66,7 +67,7 @@
        
         <?php $bus_count++;} ?>
     </table>
-    
+</div>  
     <footer class="footer-container">
         <div class="footer-content">
              <p>BUS OCCUPANCY</p>
@@ -74,8 +75,8 @@
             <ul class="social-links">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                <li><a href="https://www.instagram.com/im_ajmal_k/"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/channel/UCRDnaxGwNRZ49o3jDe1vvzQ/featured?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a></li>
             </ul>
             <p class="credits">Copyright &copy;2020 BUS OCCUPANCY. Designed by <span>Ajmal | Vaishnavi | Heet</span></p>
         </div> 
