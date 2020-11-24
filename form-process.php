@@ -8,13 +8,11 @@ $result = $db->con->query($sql);
 // $result = $mysqli->query($sql);
 if(!$result){
     die("Couldn't enter data: ".$mysqli->error);
+}else{
+    echo '<script>swal({
+  title: "Good job!",
+  text: "You clicked the button!",
+  icon: "success",
+});</script>';
 }
 ?>
-<html>
-<title>Thank You</title>
-<center>
-<font color="red">
-<h1>Thank You For Contacting Us!!!</h1>
-</font>
-</center>
-</html>

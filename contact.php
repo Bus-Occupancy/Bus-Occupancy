@@ -4,132 +4,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-	<style>
-	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+    <link rel="stylesheet" href="./style.css">
+    <!-- --swett alert cdn--- -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+<body id="contact-body">
+<?php
+// include("config.php");
+require("functions.php");
+if($_SERVER['REQUEST_METHOD']=="POST"){
+    extract($_POST);
+    $sql = "INSERT INTO `contactdata`(`name`, `phone`, `email`, `message`) VALUES ('".$name."',".$phone.",'".$email."','".$message."')";
+    $result = $db->con->query($sql);
+    // $result = $mysqli->query($sql);
+    if(!$result){
+        die("Couldn't enter data: ".$mysqli->error);
+    }else{
+        echo '<script>swal({
+      title: "Thank You!",
+      text: "Your message has been sent.",
+      icon: "success",
+    });</script>';
+    }
 }
-
-
-
-.contact-section{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.contact-info{
-  color: #fff;
-  max-width: 500px;
-  line-height: 65px;
-  padding-left: 50px;
-  font-size: 18px;
-}
-
-.contact-info i{
-  margin-right: 20px;
-  font-size: 25px;
-}
-
-.contact-form{
-  max-width: 700px;
-  margin-right: 50px;
-}
-
-.contact-info, .contact-form{
-  flex: 1;
-}
-
-.contact-form h2{
-  color: #fff;
-  text-align: center;
-  font-size: 35px;
-  text-transform: uppercase;
-  margin-bottom: 30px;
-}
-
-.contact-form .text-box{
-  background: 	 #ffff99;
-  color: #000;
-  border: none;
-  width: 100%;
-  height: 50px;
-  padding: 12px;
-  font-size: 15px;
-  border-radius: 5px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  opacity: 0.9;
-}
-
-.contact-form .text-box:first-child{
-  margin-right: 15px;
-}
-
-.contact-form textarea{
-  background:  #ffff99;
-  color: #000;
-  border: none;
-  width: 100%;
-  padding: 12px;
-  font-size: 15px;
-  min-height: 100px;
-  max-height: 300px;
-  resize: vertical;
-  border-radius: 5px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  opacity: 0.9;
-}
-
-.contact-form .send-btn{
-  float: right;
-  background: #ff4d4d;
-  color: #fff;
-  border: none;
-  width: 120px;
-  height: 40px;
-  font-size: 15px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-  transition-property: background;
-}
-
-.contact-form .send-btn:hover{
-  background: #0582E3;
-}
-
-@media screen and (max-width: 950px){
-  .contact-section{
-    flex-direction: column;
-  }
-
-  .contact-info, .contact-form{
-    margin: 30px 50px;
-  }
-
-  .contact-form h2{
-    font-size: 30px;
-  }
-
-  .contact-form .text-box{
-    width: 100%;
-  }
-}
-
-</style>
-
-<body>
-<table>
+?>
+<header class="header-container">
+    <p class="title"><a href="./index.htm">BUS OCCUPANCY</a></p>
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="./index.htm">HOME</a></li>
+            <li><a href="./buses.php">BUSES</a></li>
+            <li><a href="./contact.php">CONTACT US</a></li>
+        </ul>
+    </nav>
+</header>
+<table id="contact-table">
 <td>
 <img src="./Images/contactimp.svg" align="right" height="170%" width="650px">
 </td>
@@ -138,15 +48,15 @@
 <div class="contact-section">
       
       <div class="contact-form">
-<br><br>
+        <br><br>
     
         <h1>CONTACT US FORM</h1><br>
-        <form action="form-process.php" method="POST">
+        <form method="POST">
             
                <b> <label for="firstname"><i class="fa fa-user"></i>&nbsp; Name</label></b><br>
                <input type="text" name="name" id="name" class="text-box" placeholder="Your Name" required><br>
             
-           <b><label for="phone"><i class="fa fa-phone"></i>&nbsp;&nbsp;Phone</label></b><br>
+                <b><label for="phone"><i class="fa fa-phone"></i>&nbsp;&nbsp;Phone</label></b><br>
                 <input type="tel" name="phone" id="phone" class="text-box"placeholder="Your Phone No" required><br>
        
          
@@ -158,14 +68,28 @@
                 <textarea name="message" id="message" rows="1" cols="50" placeholder="Your Message" required></textarea>
         
             
-        <button class="send-btn" type="submit" color="orange">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        
-    </div>
+                <button class="send-btn" type="submit" color="orange">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
         </form>
-		</div>
-    </div>
+		  </div>
+  </div>
 	</font>
 	</td>
-	</table>
+  </table>
+  
+  <footer class="footer-container">
+        <div class="footer-content">
+             <p>BUS OCCUPANCY</p>
+            <hr>
+            <ul class="social-links">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://www.instagram.com/im_ajmal_k/ " target="_blank"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/channel/UCRDnaxGwNRZ49o3jDe1vvzQ/featured?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+            <p class="credits">Copyright &copy;2020 BUS OCCUPANCY. Designed by <span>Ajmal | Vaishnavi | Heet</span></p>
+        </div> 
+            
+    </footer>
 </body>
 </html> 
